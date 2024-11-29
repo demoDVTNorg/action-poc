@@ -40,6 +40,5 @@ jobs:
         PRNUM: ${{ github.event.pull_request.number }}
         TITLE: ${{ github.event.pull_request.title }}
       run: |
-        set -x    
         echo "$MY_TOKEN" | gh auth login --with-token
         gh pr comment 1 --body "demo 1"
