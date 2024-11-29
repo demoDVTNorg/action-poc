@@ -28,12 +28,6 @@ jobs:
       pull-requests: write
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.pull_request.head.sha }}
-        fetch-depth: 0
-
-    - name: Validate Issue Reference
       env:
         MY_TOKEN: ${{ secrets.MY_TOKEN }}
         PR_BODY: ${{ github.event.pull_request.body }}
