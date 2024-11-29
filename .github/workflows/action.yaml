@@ -11,28 +11,14 @@ on:
       - 'main'
       - 'release-**'
       - 'develop'
-    # paths-ignore:
-    #   - 'docs/**'
-    #   - '.github/'
-    #   - 'CHANGELOG/'
-    #   - 'charts/'
-    #   - 'manifests/'
-    #   - 'sample-docker-templates/'
   
 jobs:
   validate-PR-issue:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      contents: read
-      pull-requests: write
     steps:
     - name: Checkout repository
       env:
         MY_TOKEN: ${{ secrets.MY_TOKEN }}
-        PR_BODY: ${{ github.event.pull_request.body }}
-        PRNUM: ${{ github.event.pull_request.number }}
-        TITLE: ${{ github.event.pull_request.title }}
       run: |
         echo "$MY_TOKEN" | gh auth login --with-token
         gh pr comment 1 --body "demo 1"
