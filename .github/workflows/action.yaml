@@ -35,10 +35,11 @@ jobs:
 
     - name: Validate Issue Reference
       env:
-        GH_TOKEN: ${{ secrets.G_TOKEN }}
+        MY_TOKEN: ${{ secrets.G_TOKEN }}
         PR_BODY: ${{ github.event.pull_request.body }}
         PRNUM: ${{ github.event.pull_request.number }}
         TITLE: ${{ github.event.pull_request.title }}
       run: |
         set -x    
+        echo "$MY_TOKEN" | gh auth login --with-token
         gh pr comment 1 --body "demo 1"
